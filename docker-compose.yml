@@ -2,9 +2,9 @@ version: '3.8'
 services:
   app:
     build: ./
-    container_name: laravel_app
+    container_name: laravel-app
     volumes:
-      - ./example-app/:/var/www  # ホストのカレントディレクトリをコンテナの /var/www にマウント
+      - ./myapp/:/var/www  # ホストのカレントディレクトリをコンテナの /var/www にマウント
     ports:
       - "8000:8000"  # Laravelのデフォルトポートを開放
     stdin_open: true  # 標準入力を開いたままにする（コンテナ内でbashを利用するため）
