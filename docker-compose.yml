@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build: ./
+    container_name: laravel_app
+    volumes:
+      - ./example-app/:/var/www  # ホストのカレントディレクトリをコンテナの /var/www にマウント
+    ports:
+      - "8000:8000"  # Laravelのデフォルトポートを開放
+    stdin_open: true  # 標準入力を開いたままにする（コンテナ内でbashを利用するため）
+    tty: true  # TTYを有効化してbashがインタラクティブに動作するようにする
+    restart: "no"  # コンテナを自動的に再起動しないように設定（`--rm` オプションと似た動作）
+
