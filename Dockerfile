@@ -14,12 +14,11 @@ RUN apt update && apt install -y \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer \
     && composer global require laravel/installer \
-    && echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc \
-    && rm -rf /var/lib/apt/lists/*  # キャッシュを削除してイメージを軽量化
+    && echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc 
 
-# Laravel プロジェクトを作成する場合は以下のコマンドを追加
-# RUN composer create-project --prefer-dist laravel/laravel .
-# RUN laravel new [app_name]
+# Laravel プロジェクトを作成する場合は以下のコマンドを追加 コンテナに入ってからでも良い
+#RUN laravel new [app_name]
 
 # Laravel の開発サーバを起動
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# CMD ["bash"]
